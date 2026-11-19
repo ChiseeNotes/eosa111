@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chisee Notes | Digital Reviewers & Academic Resources</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          },
+          colors: {
+            cream: '#FFF9FB',
+            blush: '#FFEBF1',
+            blushLight: '#FFF2F6',
+            blushDark: '#FAD2DF',
+            terracotta: '#D65A83',
+            terracottaHover: '#BE466F',
+            espresso: '#4A2E35',
+            cocoa: '#7A525C',
+            sage: '#D68C9F',
+          },
+          boxShadow: {
+            soft: '0 14px 34px -12px rgba(214, 90, 131, 0.12)',
+            card: '0 6px 24px -4px rgba(74, 46, 53, 0.06)',
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    @keyframes driftDots {
+      0% { background-position: 0px 0px; }
+      100% { background-position: 48px 48px; }
+    }
+
+    @keyframes floatGirlyUp {
+      0% { transform: translate3d(0px, 24px, 0px) rotate(-6deg) scale(0.95); opacity: 0; }
+      15% { opacity: 0.72; }
+      50% { transform: translate3d(14px, -26px, 0px) rotate(6deg) scale(1.04); opacity: 0.85; }
+      85% { opacity: 0.65; }
+      100% { transform: translate3d(-10px, -64px, 0px) rotate(-4deg) scale(0.96); opacity: 0; }
+    }
+
+    @keyframes twinkleSparkle {
+      0%, 100% { transform: translate3d(0px, 0px, 0px) scale(0.85) rotate(0deg); opacity: 0.35; }
+      50% { transform: translate3d(6px, -10px, 0px) scale(1.12) rotate(18deg); opacity: 0.85; }
+    }
+
+    @keyframes floatSoftPink {
+      0%, 100% { transform: translate3d(0px, 0px, 0px) scale(1); }
+      50% { transform: translate3d(18px, -22px, 0px) scale(1.06); }
+    }
+
+    @keyframes floatSoftPinkAlt {
+      0%, 100% { transform: translate3d(0px, 0px, 0px) scale(1); }
+      50% { transform: translate3d(-20px, 18px, 0px) scale(1.05); }
+    }
+
+    .bg-study-dots {
+      background-color: #FFF9FB;
+      background-image: radial-gradient(#F5C5D5 1.2px, transparent 1.2px);
+      background-size: 24px 24px;
+      animation: driftDots 22s linear infinite;
+    }
+
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .ambient-orb-1 {
+      position: absolute;
+      top: -6rem;
+      left: -6rem;
+      width: 24rem;
+      height: 24rem;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(255, 214, 229, 0.78) 0%, rgba(255, 235, 241, 0) 72%);
+      filter: blur(28px);
+      animation: floatSoftPink 12s ease-in-out infinite;
+    }
+
+    .ambient-orb-2 {
+      position: absolute;
+      top: 34%;
+      right: -7rem;
+      width: 26rem;
+      height: 26rem;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(250, 204, 221, 0.7) 0%, rgba(255, 242, 246, 0) 72%);
+      filter: blur(32px);
+      animation: floatSoftPinkAlt 15s ease-in-out infinite;
+    }
+
+    .ambient-orb-3 {
+      position: absolute;
+      bottom: -7rem;
+      left: 22%;
+      width: 25rem;
+      height: 25rem;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(255, 220, 233, 0.72) 0%, rgba(255, 249, 251, 0) 72%);
+      filter: blur(30px);
+      animation: floatSoftPink 14s ease-in-out infinite reverse;
+    }
+
+    .girly-motif {
+      position: absolute;
+      color: #E58CA9;
+    }
+
+    .motif-float-1 { animation: floatGirlyUp 11s ease-in-out infinite; }
+    .motif-float-2 { animation: floatGirlyUp 14s ease-in-out infinite; }
+    .motif-twinkle { animation: twinkleSparkle 5.5s ease-in-out infinite; }
+
+    .aesthetic-box {
+      background: linear-gradient(165deg, rgba(255, 247, 250, 0.96) 0%, rgba(255, 234, 241, 0.96) 100%);
+      border: 1px solid #F6CBD9;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .aesthetic-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #F6CBD9 0%, #D65A83 50%, #F6CBD9 100%);
+      opacity: 0.7;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bg-study-dots,
+      .ambient-orb-1,
+      .ambient-orb-2,
+      .ambient-orb-3,
+      .motif-float-1,
+      .motif-float-2,
+      .motif-twinkle {
+        animation: none;
+      }
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #FFF9FB; }
+    ::-webkit-scrollbar-thumb { background: #FAD2DF; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #D65A83; }
+  </style>
+</head>
+
+<body class="bg-study-dots text-espresso font-sans antialiased selection:bg-terracotta selection:text-white border-8 border-blushDark/50 min-h-screen relative">
+
+  <!-- GIRLY AESTHETIC BACKGROUND MOTIFS & GLOWS -->
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-orb-1"></div>
+    <div class="ambient-orb-2"></div>
+    <div class="ambient-orb-3"></div>
+
+    <svg class="girly-motif motif-float-1 w-9 h-9 top-[12%] left-[8%] opacity-60" style="animation-delay: 0s;" viewBox="0 0 36 28" fill="none">
+      <path d="M16 14C12 8 4 6 2.5 11C1 16 8 20 16 15.5Z" fill="#F4B6CA" stroke="#E28BA8" stroke-width="1.4"/>
+      <path d="M20 14C24 8 32 6 33.5 11C35 16 28 20 20 15.5Z" fill="#F4B6CA" stroke="#E28BA8" stroke-width="1.4"/>
+      <path d="M15 16L10 25L14.5 23.5L16.5 26.5L18 17" stroke="#E28BA8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M21 16L26 25L21.5 23.5L19.5 26.5L18 17" stroke="#E28BA8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="15.5" y="11.5" width="5" height="5.5" rx="2" fill="#E893AF"/>
+    </svg>
+
+    <svg class="girly-motif motif-float-2 w-8 h-8 top-[58%] right-[7%] opacity-55" style="animation-delay: -5s;" viewBox="0 0 36 28" fill="none">
+      <path d="M16 14C12 8 4 6 2.5 11C1 16 8 20 16 15.5Z" fill="#F7C5D5" stroke="#E28BA8" stroke-width="1.4"/>
+      <path d="M20 14C24 8 32 6 33.5 11C35 16 28 20 20 15.5Z" fill="#F7C5D5" stroke="#E28BA8" stroke-width="1.4"/>
+      <path d="M15 16L10 25L14.5 23.5L16.5 26.5L18 17" stroke="#E28BA8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M21 16L26 25L21.5 23.5L19.5 26.5L18 17" stroke="#E28BA8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="15.5" y="11.5" width="5" height="5.5" rx="2" fill="#E893AF"/>
+    </svg>
+
+    <svg class="girly-motif motif-float-2 w-6 h-6 top-[24%] right-[14%] opacity-60" style="animation-delay: -2s;" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+
+    <svg class="girly-motif motif-float-1 w-5 h-5 top-[78%] left-[12%] opacity-55" style="animation-delay: -7s;" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+
+    <svg class="girly-motif motif-twinkle w-6 h-6 top-[16%] right-[28%]" style="animation-delay: -1s;" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+    </svg>
+
+    <svg class="girly-motif motif-twinkle w-5 h-5 top-[44%] left-[5%]" style="animation-delay: -3s;" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+    </svg>
+
+    <svg class="girly-motif motif-twinkle w-6 h-6 top-[68%] right-[22%]" style="animation-delay: -4.2s;" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+    </svg>
+
+    <svg class="girly-motif motif-twinkle w-4 h-4 top-[88%] left-[38%]" style="animation-delay: -2.4s;" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z"/>
+    </svg>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastNotification" class="fixed top-6 right-6 z-50 hidden items-center gap-2.5 px-5 py-3 rounded-2xl bg-espresso text-white text-xs sm:text-sm font-medium shadow-xl border border-blushDark/40">
+    <span class="w-5 h-5 rounded-full bg-terracotta text-white inline-flex items-center justify-center text-xs font-bold">+</span>
+    <span id="toastMessage">Added to cart</span>
+  </div>
+
+  <main class="relative z-10">
+
+    <!-- HOME SECTION -->
+    <section id="home" class="relative overflow-hidden pt-16 pb-20 sm:pt-24 sm:pb-28 border-b border-blushDark/50">
+      <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blush border border-blushDark text-terracotta font-bold text-xs sm:text-sm tracking-widest uppercase mb-6 shadow-sm">
+          <span>We Are Back • Updated Pricelist</span>
+        </div>
+
+        <h1 class="font-serif font-bold text-4xl sm:text-6xl lg:text-7xl text-espresso tracking-tight leading-tight mb-4">
+          Chisee Notes
+        </h1>
+
+        <p class="text-xl sm:text-2xl font-semibold text-terracotta max-w-2xl mx-auto mb-3">
+          Digital Reviewers &amp; Academic Resources
+        </p>
+
+        <p class="text-base sm:text-lg text-cocoa max-w-xl mx-auto mb-9 leading-relaxed">
+          Your study companion for smarter learning.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="#services"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-terracotta hover:bg-terracottaHover text-white font-semibold text-base shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5"
+          >
+            <span>Browse Updated Pricelist</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="mt-12 pt-8 border-t border-blushDark/60 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-xl mx-auto text-sm text-cocoa font-medium">
+          <div class="aesthetic-box flex items-center justify-center gap-2 py-3 px-4 rounded-xl shadow-sm">
+            <span class="text-terracotta font-bold">/</span> Instant Digital PDF &amp; Docs
+          </div>
+          <div class="aesthetic-box flex items-center justify-center gap-2 py-3 px-4 rounded-xl shadow-sm">
+            <span class="text-terracotta font-bold">/</span> Freebie Bundles Included
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-16 sm:py-24 bg-blush/35 border-b border-blushDark/50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="aesthetic-box rounded-3xl p-6 sm:p-10 lg:p-12 shadow-soft">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+
+            <div class="lg:col-span-5 min-w-0">
+              <div class="bg-blushLight rounded-2xl p-6 text-center border border-blushDark/80 relative">
+                <div class="relative w-full h-64 sm:h-72 rounded-2xl overflow-hidden bg-blush border border-blushDark/70 shadow-sm mb-5 flex items-center justify-center">
+                  <img
+                    src="frienciss.jpg"
+                    alt="Chisee Notes student"
+                    class="w-full h-full object-cover object-center"
+                    onerror="this.classList.add('hidden'); document.getElementById('aboutPhotoFallback').classList.remove('hidden');"
+                  />
+                  <div id="aboutPhotoFallback" class="hidden flex-col items-center justify-center p-6 text-center space-y-1.5">
+                    <span class="text-[11px] font-bold uppercase tracking-widest text-terracotta">Chisee Notes</span>
+                    <p class="font-serif font-bold text-lg text-espresso">BSEd English Major</p>
+                    <p class="text-xs text-cocoa">Add <span class="font-semibold text-espresso">frienciss.jpg</span> in your folder</p>
+                  </div>
+                </div>
+
+                <h3 class="font-serif font-bold text-xl text-espresso mb-1 leading-snug">
+                  Created by a Student, For Students
+                </h3>
+
+                <p class="text-sm font-semibold text-terracotta mb-4">
+                  BSEd — English Major
+                </p>
+
+                <div class="bg-cream/95 rounded-xl p-4 text-left space-y-2.5 text-xs sm:text-sm text-cocoa border border-blushDark/60">
+                  <p class="flex items-start gap-2.5">
+                    <span class="text-terracotta font-bold mt-0.5">•</span>
+                    <span>Aesthetic &amp; clutter-free layouts</span>
+                  </p>
+                  <p class="flex items-start gap-2.5">
+                    <span class="text-terracotta font-bold mt-0.5">•</span>
+                    <span>Color-coded key terms &amp; tables</span>
+                  </p>
+                  <p class="flex items-start gap-2.5">
+                    <span class="text-terracotta font-bold mt-0.5">•</span>
+                    <span>Practice questions included</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:col-span-7 min-w-0 space-y-4 pt-1">
+              <h2 class="font-serif font-bold text-3xl sm:text-4xl text-espresso leading-tight">
+                About Chisee Notes
+              </h2>
+
+              <p class="text-sm sm:text-base text-cocoa leading-relaxed break-words">
+                Welcome to <strong class="text-espresso font-semibold">Chisee Notes!</strong> Your online study companion dedicated to providing helpful, creative, and accessible digital reviewers and academic resources.
+              </p>
+
+              <p class="text-sm sm:text-base text-cocoa leading-relaxed break-words">
+                Created by a <strong class="text-espresso font-semibold">Bachelor of Secondary Education (BSEd) English Major</strong> student, this space is designed to help fellow students review smarter, master key concepts, and ace their exams with confidence—without feeling overwhelmed by messy, unorganized handouts.
+              </p>
+
+              <div class="pt-2 flex flex-wrap gap-2.5">
+                <span class="px-3.5 py-1.5 rounded-xl bg-blushLight border border-blushDark text-xs font-semibold text-espresso">
+                  Organized Reviewers
+                </span>
+                <span class="px-3.5 py-1.5 rounded-xl bg-blushLight border border-blushDark text-xs font-semibold text-espresso">
+                  Clear Summaries
+                </span>
+                <span class="px-3.5 py-1.5 rounded-xl bg-blushLight border border-blushDark text-xs font-semibold text-espresso">
+                  English &amp; Educ Focus
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-16 sm:py-24 bg-cream/75">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="inline-block px-3.5 py-1 rounded-full bg-blush border border-blushDark/70 text-terracotta font-bold text-xs uppercase tracking-wider mb-3">
+            Updated Pricelist
+          </span>
+          <h2 class="font-serif font-bold text-3xl sm:text-4xl text-espresso mb-3">
+            Reviewers &amp; Study Packages
+          </h2>
+        </div>
+
+        <!-- SPECIAL PROMO BANNER -->
+        <div class="aesthetic-box mb-10 rounded-3xl p-6 sm:p-8 shadow-soft">
+          <div class="flex items-center gap-2.5 mb-4">
+            <span class="px-3 py-1 rounded-full bg-terracotta text-white text-xs font-bold uppercase tracking-wider">
+              Special Promo
+            </span>
+            <span class="text-xs sm:text-sm font-semibold text-espresso">Limited-Time Comeback Treat</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div class="bg-blushLight/95 rounded-2xl p-5 border border-blushDark/80 shadow-sm">
+              <h3 class="font-serif font-bold text-lg text-espresso mb-1.5">
+                Free Section A Bundle
+              </h3>
+              <p class="text-sm text-cocoa leading-relaxed">
+                When you avail of <strong class="text-terracotta">ANY Specialized Academic Reviewer Collection (Section B)</strong>, you get all items under <strong class="text-espresso">Section A: Individual Reviewers &amp; Smaller Collections</strong> for <strong class="text-terracotta">FREE</strong>.
+              </p>
+            </div>
+
+            <div class="bg-blushLight/95 rounded-2xl p-5 border border-blushDark/80 shadow-sm">
+              <h3 class="font-serif font-bold text-lg text-espresso mb-1.5">
+                Take-All Bundle Freebie
+              </h3>
+              <p class="text-sm text-cocoa leading-relaxed">
+                For those availing of any <strong class="text-terracotta">Take-All Bundles</strong>, you also receive the <strong class="text-espresso">Old Chisee Take-All Bundle worth ₱150</strong> for <strong class="text-terracotta">FREE</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILTERS, SEARCH & MY ORDER -->
+        <div class="aesthetic-box flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4 mb-10 p-3.5 sm:p-4 rounded-2xl shadow-card">
+          <div id="filterTabs" class="flex flex-wrap gap-2">
+            <button type="button" data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-sm font-semibold bg-terracotta text-white transition-all cursor-pointer">
+              All Pricelist
+            </button>
+            <button type="button" data-filter="section-a" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-blushLight text-cocoa border border-blushDark/60 hover:bg-blush transition-all cursor-pointer">
+              Section A: Individual &amp; Small
+            </button>
+            <button type="button" data-filter="section-b" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-blushLight text-cocoa border border-blushDark/60 hover:bg-blush transition-all cursor-pointer">
+              Section B: Specialized Collections
+            </button>
+            <button type="button" data-filter="major" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-blushLight text-cocoa border border-blushDark/60 hover:bg-blush transition-all cursor-pointer">
+              Majors (English, Filipino, BECED)
+            </button>
+            <button type="button" data-filter="ge-profed" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-blushLight text-cocoa border border-blushDark/60 hover:bg-blush transition-all cursor-pointer">
+              GenEd &amp; ProfEd
+            </button>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full lg:w-auto">
+            <div class="relative w-full sm:w-64">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-cocoa absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+              </svg>
+              <input
+                id="searchInput"
+                type="text"
+                placeholder="Search ProfEd, English, Rizal..."
+                class="w-full pl-10 pr-4 py-2 rounded-xl bg-blushLight border border-blushDark text-sm text-espresso placeholder-cocoa/60 focus:outline-none focus:border-terracotta"
+              />
+            </div>
+
+            <button
+              type="button"
+              onclick="openCartModal()"
+              class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-terracotta hover:bg-terracottaHover text-white font-semibold text-sm shadow-sm transition-colors cursor-pointer shrink-0"
+            >
+              <span>My Order</span>
+              <span id="cartCountBadge" class="px-2 py-0.5 rounded-full bg-blushLight text-terracotta font-bold text-xs">0</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="catalogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch"></div>
+
+        <div id="emptyCatalogState" class="aesthetic-box hidden text-center py-14 rounded-3xl mt-6">
+          <p class="text-xs font-bold uppercase tracking-wider text-terracotta mb-2">No Results</p>
+          <h3 class="font-serif font-bold text-xl text-espresso mb-1">
+            No matching reviewers found
+          </h3>
+          <p class="text-sm text-cocoa mb-4">
+            Try clearing your search or switching category tabs.
+          </p>
+          <button id="resetFiltersBtn" type="button" class="px-5 py-2.5 rounded-full bg-terracotta text-white text-sm font-semibold hover:bg-terracottaHover transition-colors cursor-pointer">
+            Show All Reviewers
+          </button>
+        </div>
+
+        <!-- CLOSING THANK YOU CARD -->
+        <div class="aesthetic-box mt-14 rounded-3xl p-6 sm:p-8 shadow-soft">
+          <div class="space-y-3 text-center sm:text-left max-w-3xl">
+            <h3 class="font-serif font-bold text-2xl text-espresso">
+              Chisee notes
+            </h3>
+            <p class="text-sm sm:text-base text-espresso font-medium leading-relaxed">
+              That's all po! Thank you so much for supporting <strong class="text-terracotta font-semibold">Chiseenotes</strong>. Your continued support means a lot to me.
+            </p>
+            <p class="text-sm sm:text-base text-cocoa leading-relaxed">
+              If you're interested in availing any of the reviewers or packages, just send me a message. I'll be happy to assist you!
+            </p>
+            <div class="pt-1 space-y-0.5">
+              <p class="text-sm sm:text-base text-cocoa font-medium">
+                Thank you, and happy studying!
+              </p>
+              <p class="font-serif font-bold text-lg text-espresso">
+                — Chisee
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PACKAGE & DETAILS MODAL -->
+  <div id="previewModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-espresso/45 backdrop-blur-sm">
+    <div class="bg-blushLight rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-blushDark max-h-[90vh] flex flex-col">
+      <div class="bg-blush px-6 py-4 flex items-center justify-between border-b border-blushDark shrink-0">
+        <div>
+          <span id="modalCategory" class="text-[11px] font-bold uppercase tracking-wider text-terracotta block">
+            Package Details
+          </span>
+          <h3 id="modalTitle" class="font-serif font-bold text-lg text-espresso leading-tight">
+            Resource Title
+          </h3>
+        </div>
+
+        <button id="closeModalBtn" type="button" aria-label="Close Preview" class="p-2 rounded-full bg-blushLight hover:bg-cream text-espresso border border-blushDark/70 transition-colors cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-5 overflow-y-auto">
+        <div class="aesthetic-box rounded-2xl p-5 space-y-3">
+          <div class="flex items-center justify-between border-b border-blushDark/70 pb-2">
+            <span class="text-xs font-bold text-terracotta uppercase tracking-wider">
+              Packages &amp; Inclusions
+            </span>
+          </div>
+          <div id="modalSnippet" class="text-sm text-espresso leading-relaxed space-y-2"></div>
+        </div>
+
+        <div class="pt-1 space-y-3">
+          <span class="text-[11px] font-bold uppercase tracking-wider text-terracotta block">
+            Choose Package to Add to Cart
+          </span>
+          <div id="modalOrderBox" class="space-y-2.5"></div>
+        </div>
+
+        <div class="flex items-center justify-between text-sm pt-3 border-t border-blushDark/70">
+          <div>
+            <span class="text-cocoa">Rate / Take-All:</span>
+            <span id="modalPrice" class="font-bold text-lg text-terracotta ml-1">₱59</span>
+          </div>
+
+          <button
+            type="button"
+            onclick="closePreviewModal(); openCartModal();"
+            class="px-4 py-2 rounded-xl bg-espresso text-white font-semibold text-xs hover:opacity-90 transition-opacity cursor-pointer"
+          >
+            Go to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART & DOWNLOADABLE RECEIPT MODAL -->
+  <div id="cartModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-espresso/50 backdrop-blur-sm">
+    <div class="bg-blushLight rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-blushDark max-h-[92vh] flex flex-col">
+      <div class="bg-blush px-6 py-4 flex items-center justify-between border-b border-blushDark shrink-0">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-terracotta block">
+            Chisee Notes Order Summary
+          </span>
+          <h3 class="font-serif font-bold text-lg text-espresso leading-tight">
+            Your Cart &amp; Receipt
+          </h3>
+        </div>
+
+        <button type="button" onclick="closeCartModal()" aria-label="Close Cart" class="p-2 rounded-full bg-blushLight hover:bg-cream text-espresso border border-blushDark/70 transition-colors cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-4 overflow-y-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label for="customerNameInput" class="block text-[11px] font-bold uppercase tracking-wider text-cocoa mb-1">
+              Your Name / TikTok User
+            </label>
+            <input
+              id="customerNameInput"
+              type="text"
+              placeholder="e.g. james"
+              class="w-full px-3.5 py-2 rounded-xl bg-cream border border-blushDark text-xs text-espresso focus:outline-none focus:border-terracotta"
+            />
+          </div>
+          <div>
+            <label for="paymentMethodSelect" class="block text-[11px] font-bold uppercase tracking-wider text-cocoa mb-1">
+              Mode of Payment
+            </label>
+            <select
+              id="paymentMethodSelect"
+              class="w-full px-3.5 py-2 rounded-xl bg-cream border border-blushDark text-xs text-espresso focus:outline-none focus:border-terracotta"
+            >
+              <option value="GCash">GCash</option>
+              <option value="MariBank">MariBank</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="cartItemsContainer" class="aesthetic-box rounded-2xl p-4 space-y-2.5 max-h-60 overflow-y-auto"></div>
+
+        <div id="cartFreebieBanner" class="hidden bg-blush rounded-2xl p-3.5 border border-blushDark text-xs text-espresso space-y-1"></div>
+
+        <div class="flex items-center justify-between px-2 pt-1 border-t border-blushDark/70">
+          <span class="text-sm font-semibold text-cocoa">Total Amount:</span>
+          <span id="cartTotalAmount" class="font-serif font-bold text-2xl text-terracotta">₱0</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+          <button
+            id="downloadReceiptBtn"
+            type="button"
+            onclick="downloadOrderReceipt()"
+            class="w-full px-4 py-3 rounded-xl bg-terracotta hover:bg-terracottaHover text-white font-semibold text-xs inline-flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
+          >
+            <span>Download Order Receipt</span>
+          </button>
+
+          <button
+            type="button"
+            onclick="closeCartModal(); openMopModal();"
+            class="w-full px-4 py-3 rounded-xl bg-blush hover:bg-blushDark/70 text-espresso font-semibold text-xs border border-blushDark/80 inline-flex items-center justify-center gap-2 transition-colors cursor-pointer"
+          >
+            <span>View Payment Details</span>
+          </button>
+        </div>
+
+        <!-- DIRECT IMAGE RECEIPT VIEWER INSIDE MODAL -->
+        <div id="inlineReceiptImageBox" class="hidden pt-2 border-t border-blushDark/70 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-terracotta">
+              Receipt Image Preview
+            </span>
+            <button
+              type="button"
+              onclick="saveReceiptPngAgain()"
+              class="text-[11px] font-bold text-terracotta hover:text-terracottaHover underline cursor-pointer"
+            >
+              Save PNG Again
+            </button>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-blushDark/80 bg-[#F9DCE6] p-2 shadow-sm">
+            <img
+              id="inlineReceiptImage"
+              alt="Chisee Notes Official Order Receipt"
+              class="w-full h-auto rounded-xl block"
+            />
+          </div>
+        </div>
+
+        <div class="text-center pt-1">
+          <a
+            href="https://www.tiktok.com/@chisee_atelier_educnotes?_r=1&_t=ZS-9BWk1R3Wv4S"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 text-xs font-bold text-terracotta hover:text-terracottaHover underline"
+          >
+            <span>Send Receipt &amp; Proof of Payment on TikTok</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AESTHETIC PNG RECEIPT POPUP MODAL -->
+  <div id="receiptPreviewModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-espresso/55 backdrop-blur-sm">
+    <div class="bg-blushLight rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-blushDark max-h-[92vh] flex flex-col">
+      <div class="bg-blush px-6 py-4 flex items-center justify-between border-b border-blushDark shrink-0">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-terracotta block">
+            Official Receipt Image
+          </span>
+          <h3 class="font-serif font-bold text-lg text-espresso leading-tight">
+            Chisee Notes Receipt
+          </h3>
+        </div>
+
+        <button type="button" onclick="closeReceiptPreviewModal()" aria-label="Close Receipt Preview" class="p-2 rounded-full bg-blushLight hover:bg-cream text-espresso border border-blushDark/70 transition-colors cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-5 space-y-3.5 overflow-y-auto">
+        <p id="receiptMobileHint" class="text-xs text-cocoa leading-relaxed bg-blush/70 border border-blushDark/60 rounded-xl p-3">
+          Ito ang image receipt mo. Kung hindi kusang nag-save sa CP mo, pindutin ang <strong>Save PNG Again</strong> o i-long-press ang receipt image sa baba.
+        </p>
+
+        <div class="rounded-2xl overflow-hidden border border-blushDark/80 bg-[#F9DCE6] p-2 shadow-sm">
+          <img
+            id="receiptImagePreview"
+            alt="Chisee Notes Official Order Receipt"
+            class="w-full h-auto rounded-xl block"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <button
+            type="button"
+            onclick="saveReceiptPngAgain()"
+            class="w-full px-4 py-2.5 rounded-xl bg-terracotta hover:bg-terracottaHover text-white font-semibold text-xs transition-colors cursor-pointer"
+          >
+            Save PNG Again
+          </button>
+
+          <button
+            type="button"
+            onclick="closeReceiptPreviewModal(); openMopModal();"
+            class="w-full px-4 py-2.5 rounded-xl bg-blush hover:bg-blushDark/70 text-espresso font-semibold text-xs border border-blushDark/80 transition-colors cursor-pointer"
+          >
+            Payment Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODE OF PAYMENT MODAL -->
+  <div id="mopModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-espresso/50 backdrop-blur-sm">
+    <div class="bg-blushLight rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-blushDark max-h-[90vh] flex flex-col">
+      <div class="bg-blush px-6 py-4 flex items-center justify-between border-b border-blushDark shrink-0">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-terracotta block">
+            GCash • MariBank
+          </span>
+          <h3 class="font-serif font-bold text-lg text-espresso leading-tight">
+            Chisee Notes Payment Details
+          </h3>
+        </div>
+
+        <button id="closeMopModalBtn" type="button" onclick="closeMopModal()" aria-label="Close Payment Modal" class="p-2 rounded-full bg-blushLight hover:bg-cream text-espresso border border-blushDark/70 transition-colors cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-6 space-y-4 overflow-y-auto">
+        <div class="relative w-full rounded-2xl overflow-hidden bg-blush border border-blushDark/70 shadow-sm flex items-center justify-center min-h-[180px]">
+          <img
+            src="MODE OF PAYMENT.jpg"
+            alt="Chisee Notes Mode of Payment"
+            class="w-full h-auto object-contain"
+            onerror="this.classList.add('hidden'); document.getElementById('mopFallback').classList.remove('hidden');"
+          />
+          <div id="mopFallback" class="hidden flex-col items-center justify-center p-6 text-center space-y-1.5">
+            <span class="text-[11px] font-bold uppercase tracking-widest text-terracotta">Mode of Payment</span>
+            <p class="font-serif font-bold text-base text-espresso">GCash &amp; MariBank</p>
+            <p class="text-xs text-cocoa">Add <span class="font-semibold text-espresso">MODE OF PAYMENT.jpg</span> in your folder</p>
+          </div>
+        </div>
+
+        <div class="aesthetic-box rounded-2xl p-4 space-y-2 text-xs text-espresso">
+          <p class="font-bold text-terracotta uppercase tracking-wider text-[11px]">How to Avail:</p>
+          <p>1. Download your PNG order receipt.</p>
+          <p>2. Send payment via <strong>GCash</strong> or <strong>MariBank</strong>.</p>
+          <p>3. Send this order receipt + proof of payment to our TikTok (@chisee_atelier_educnotes).</p>
+        </div>
+
+        <a
+          href="https://www.tiktok.com/@chisee_atelier_educnotes?_r=1&_t=ZS-9BWk1R3Wv4S"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="w-full px-4 py-3 rounded-xl bg-terracotta hover:bg-terracottaHover text-white font-semibold text-xs inline-flex items-center justify-center gap-2 shadow-sm transition-colors"
+        >
+          <span>Message @chisee_atelier_educnotes on TikTok</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const reviewersCatalog = [
+      {
+        id: 'rev-gened-pink',
+        title: 'GenEd Pink Reviewer',
+        sectionTag: 'Section A: Individual & Small',
+        categories: ['all', 'section-a', 'ge-profed'],
+        priceLabel: '₱59',
+        priceNum: 59,
+        packages: [
+          { label: 'GenEd Pink Reviewer', price: 59 }
+        ],
+        shortDesc: 'Clean, pink-themed General Education reviewer with key concepts and practice drills.',
+        snippetHtml: `
+          <p><strong>GenEd Pink Reviewer — ₱59</strong></p>
+          <p>Structured summaries and exam-focused highlights designed for fast, organized reviewing.</p>
+        `
+      },
+      {
+        id: 'rev-profed-notes',
+        title: 'ProfEd Notes & Drills',
+        sectionTag: 'Section A: Individual & Small',
+        categories: ['all', 'section-a', 'ge-profed'],
+        priceLabel: '₱69',
+        priceNum: 69,
+        packages: [
+          { label: 'ProfEd Notes & Drills', price: 69 }
+        ],
+        shortDesc: 'Professional Education reviewer covering principles, pedagogy, and assessment essentials.',
+        snippetHtml: `
+          <p><strong>ProfEd Notes &amp; Drills — ₱69</strong></p>
+          <p>Includes clear tables, key theorists, and practice items to reinforce classroom concepts.</p>
+        `
+      },
+      {
+        id: 'rev-beced-major',
+        title: 'BECED Specialization',
+        sectionTag: 'Section B: Specialized Collections',
+        categories: ['all', 'section-b', 'major'],
+        priceLabel: '₱59',
+        priceNum: 59,
+        packages: [
+          { label: 'Tier 1: Trial (5+1 Freebies)', price: 59 },
+          { label: 'Tier 2: Lite (8+2 Freebies)', price: 99 },
+          { label: 'Take-All Bundle (BECED + Freebies)', price: 249 }
+        ],
+        shortDesc: 'Early childhood education notes on child development, play-based learning, and curriculum.',
+        snippetHtml: `
+          <p><strong>Tier 1: Trial (5+1 Freebies) — ₱59</strong></p>
+          <p><strong>Tier 2: Lite (8+2 Freebies) — ₱99</strong></p>
+          <p><strong>Take-All Bundle — ₱249</strong> (Includes Free Section A Bundle + Old Chisee Take-All Bundle worth ₱150)</p>
+        `
+      },
+      {
+        id: 'rev-english-major',
+        title: 'BSEd English Major Collection',
+        sectionTag: 'Section B: Specialized Collections',
+        categories: ['all', 'section-b', 'major'],
+        priceLabel: '₱149',
+        priceNum: 149,
+        packages: [
+          { label: 'English Major Set', price: 149 },
+          { label: 'Take-All Bundle (English + Freebies)', price: 249 }
+        ],
+        shortDesc: 'Comprehensive major notes for literature, linguistics, grammar, and language teaching.',
+        snippetHtml: `
+          <p><strong>English Major Set — ₱149</strong></p>
+          <p><strong>Take-All Bundle — ₱249</strong> (Includes Free Section A Bundle + Old Chisee Take-All Bundle worth ₱150)</p>
+        `
+      },
+      {
+        id: 'rev-filipino-major',
+        title: 'Filipino Major Reviewer Set',
+        sectionTag: 'Section B: Specialized Collections',
+        categories: ['all', 'section-b', 'major'],
+        priceLabel: '₱149',
+        priceNum: 149,
+        packages: [
+          { label: 'Filipino Major Set', price: 149 },
+          { label: 'Take-All Bundle (Filipino + Freebies)', price: 249 }
+        ],
+        shortDesc: 'Organized study guides on panitikan, linggwistika, at pagtuturo ng Filipino.',
+        snippetHtml: `
+          <p><strong>Filipino Major Set — ₱149</strong></p>
+          <p><strong>Take-All Bundle — ₱249</strong> (Includes Free Section A Bundle + Old Chisee Take-All Bundle worth ₱150)</p>
+        `
+      },
+      {
+        id: 'rev-rizal-history',
+        title: 'Rizal & Readings in PH History',
+        sectionTag: 'Section A: Individual & Small',
+        categories: ['all', 'section-a', 'ge-profed'],
+        priceLabel: '₱49',
+        priceNum: 49,
+        packages: [
+          { label: 'Rizal & PH History Notes', price: 49 }
+        ],
+        shortDesc: 'Concise timelines, primary source highlights, and key events for quick exam prep.',
+        snippetHtml: `
+          <p><strong>Rizal &amp; PH History Notes — ₱49</strong></p>
+          <p>Easy-to-scan summaries and key takeaways for GE history and Rizal subjects.</p>
+        `
+      }
+    ];
+
+    let currentFilter = 'all';
+    let currentSearch = '';
+    let cart = [];
+    let lastReceiptDataUrl = '';
+    let lastReceiptFilename = 'Chisee-Notes-Receipt.png';
+
+    const catalogGrid = document.getElementById('catalogGrid');
+    const emptyCatalogState = document.getElementById('emptyCatalogState');
+    const searchInput = document.getElementById('searchInput');
+    const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+    const previewModal = document.getElementById('previewModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const cartModal = document.getElementById('cartModal');
+    const receiptPreviewModal = document.getElementById('receiptPreviewModal');
+    const mopModal = document.getElementById('mopModal');
+    const toastNotification = document.getElementById('toastNotification');
+    const toastMessage = document.getElementById('toastMessage');
+
+    let toastTimeout = null;
+
+    function showToast(msg) {
+      toastMessage.textContent = msg;
+      toastNotification.classList.remove('hidden');
+      toastNotification.classList.add('flex');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toastNotification.classList.add('hidden');
+        toastNotification.classList.remove('flex');
+      }, 2400);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function renderCatalog() {
+      const q = currentSearch.trim().toLowerCase();
+
+      const filtered = reviewersCatalog.filter((item) => {
+        const matchesFilter = currentFilter === 'all' || item.categories.includes(currentFilter);
+        const matchesSearch =
+          !q ||
+          item.title.toLowerCase().includes(q) ||
+          item.shortDesc.toLowerCase().includes(q) ||
+          item.sectionTag.toLowerCase().includes(q);
+        return matchesFilter && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        catalogGrid.innerHTML = '';
+        emptyCatalogState.classList.remove('hidden');
+        return;
+      }
+
+      emptyCatalogState.classList.add('hidden');
+
+      catalogGrid.innerHTML = filtered
+        .map((item) => {
+          const defaultPkg = item.packages[0];
+          return `
+            <article class="aesthetic-box rounded-3xl p-6 shadow-card flex flex-col justify-between h-full">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-3">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-terracotta">
+                    ${escapeHtml(item.sectionTag)}
+                  </span>
+                  <span class="font-serif font-bold text-lg text-espresso">
+                    ${escapeHtml(item.priceLabel)}
+                  </span>
+                </div>
+
+                <h3 class="font-serif font-bold text-xl text-espresso mb-2">
+                  ${escapeHtml(item.title)}
+                </h3>
+
+                <p class="text-sm text-cocoa leading-relaxed mb-6">
+                  ${escapeHtml(item.shortDesc)}
+                </p>
+              </div>
+
+              <div class="flex items-center gap-2.5 pt-3 border-t border-blushDark/60">
+                <button
+                  type="button"
+                  onclick="openPreviewModal('${item.id}')"
+                  class="flex-1 px-4 py-2.5 rounded-xl bg-blushLight hover:bg-blush text-espresso font-semibold text-xs border border-blushDark/80 transition-colors cursor-pointer"
+                >
+                  Details
+                </button>
+
+                <button
+                  type="button"
+                  onclick="addToCart('${item.id}', '${escapeHtml(defaultPkg.label)}', ${defaultPkg.price})"
+                  class="flex-1 px-4 py-2.5 rounded-xl bg-terracotta hover:bg-terracottaHover text-white font-semibold text-xs shadow-sm transition-colors cursor-pointer"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+    }
+
+    function openPreviewModal(itemId) {
+      const item = reviewersCatalog.find((r) => r.id === itemId);
+      if (!item) return;
+
+      document.getElementById('modalCategory').textContent = item.sectionTag;
+      document.getElementById('modalTitle').textContent = item.title;
+      document.getElementById('modalSnippet').innerHTML = item.snippetHtml;
+      document.getElementById('modalPrice').textContent = item.priceLabel;
+
+      const orderBox = document.getElementById('modalOrderBox');
+      orderBox.innerHTML = item.packages
+        .map(
+          (pkg) => `
+            <div class="flex items-center justify-between gap-3 p-3 rounded-2xl bg-cream border border-blushDark/70">
+              <div>
+                <p class="text-xs font-semibold text-espresso">${escapeHtml(pkg.label)}</p>
+                <p class="text-xs font-bold text-terracotta">₱${pkg.price}</p>
+              </div>
+              <button
+                type="button"
+                onclick="addToCart('${item.id}', '${escapeHtml(pkg.label)}', ${pkg.price})"
+                class="px-3.5 py-2 rounded-xl bg-terracotta hover:bg-terracottaHover text-white font-semibold text-xs transition-colors cursor-pointer shrink-0"
+              >
+                Add
+              </button>
+            </div>
+          `
+        )
+        .join('');
+
+      previewModal.classList.remove('hidden');
+      previewModal.classList.add('flex');
+    }
+
+    function closePreviewModal() {
+      previewModal.classList.add('hidden');
+      previewModal.classList.remove('flex');
+    }
+
+    function addToCart(itemId, pkgLabel, priceNum) {
+      const item = reviewersCatalog.find((r) => r.id === itemId);
+      if (!item) return;
+
+      const key = `${itemId}__${pkgLabel}`;
+      const existing = cart.find((c) => c.key === key);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          key,
+          id: item.id,
+          title: item.title,
+          pkgLabel,
+          priceNum,
+          qty: 1
+        });
+      }
+
+      updateCartBadge();
+      renderCartModal();
+      showToast(`Added "${pkgLabel}" to cart`);
+    }
+
+    function changeCartQty(key, delta) {
+      const idx = cart.findIndex((c) => c.key === key);
+      if (idx === -1) return;
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) {
+        cart.splice(idx, 1);
+      }
+      updateCartBadge();
+      renderCartModal();
+    }
+
+    function updateCartBadge() {
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cartCountBadge').textContent = totalQty;
+    }
+
+    function getPromoFreebies() {
+      const hasSectionB = cart.some((c) => {
+        const rev = reviewersCatalog.find((r) => r.id === c.id);
+        return rev && rev.categories.includes('section-b');
+      });
+
+      const hasTakeAll = cart.some((c) => c.pkgLabel.toLowerCase().includes('take-all'));
+
+      const freebies = [];
+      if (hasSectionB) {
+        freebies.push('Complete Section A Bundle (₱0)');
+      }
+      if (hasTakeAll) {
+        freebies.push('Old Chisee Take-All Bundle worth ₱150 (₱0)');
+      }
+      return freebies;
+    }
+
+    function renderCartModal() {
+      const container = document.getElementById('cartItemsContainer');
+      const freebieBanner = document.getElementById('cartFreebieBanner');
+      const totalEl = document.getElementById('cartTotalAmount');
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <p class="text-xs text-cocoa text-center py-4">
+            Your cart is empty. Click <strong>Add to Cart</strong> on any reviewer package.
+          </p>
+        `;
+        freebieBanner.classList.add('hidden');
+        freebieBanner.innerHTML = '';
+        totalEl.textContent = '₱0';
+        return;
+      }
+
+      container.innerHTML = cart
+        .map(
+          (item) => `
+            <div class="flex items-center justify-between gap-2 bg-cream/95 rounded-xl p-3 border border-blushDark/60">
+              <div class="min-w-0">
+                <p class="text-xs font-bold text-espresso truncate">${escapeHtml(item.title)}</p>
+                <p class="text-[11px] text-cocoa truncate">${escapeHtml(item.pkgLabel)} • ₱${item.priceNum} each</p>
+              </div>
+              <div class="flex items-center gap-1.5 shrink-0">
+                <button
+                  type="button"
+                  onclick="changeCartQty('${escapeHtml(item.key)}', -1)"
+                  class="w-6 h-6 rounded-lg bg-blush text-espresso font-bold text-xs flex items-center justify-center cursor-pointer"
+                  aria-label="Decrease quantity"
+                >-</button>
+                <span class="text-xs font-bold text-espresso w-5 text-center">${item.qty}</span>
+                <button
+                  type="button"
+                  onclick="changeCartQty('${escapeHtml(item.key)}', 1)"
+                  class="w-6 h-6 rounded-lg bg-blush text-espresso font-bold text-xs flex items-center justify-center cursor-pointer"
+                  aria-label="Increase quantity"
+                >+</button>
+              </div>
+            </div>
+          `
+        )
+        .join('');
+
+      const freebies = getPromoFreebies();
+      if (freebies.length > 0) {
+        freebieBanner.classList.remove('hidden');
+        freebieBanner.innerHTML = `
+          <p class="font-bold text-terracotta uppercase tracking-wider text-[10px]">Unlocked Freebies:</p>
+          ${freebies.map((f) => `<p class="font-medium text-espresso">• ${escapeHtml(f)}</p>`).join('')}
+        `;
+      } else {
+        freebieBanner.classList.add('hidden');
+        freebieBanner.innerHTML = '';
+      }
+
+      const total = cart.reduce((sum, item) => sum + item.priceNum * item.qty, 0);
+      totalEl.textContent = `₱${total}`;
+    }
+
+    function openCartModal() {
+      renderCartModal();
+      cartModal.classList.remove('hidden');
+      cartModal.classList.add('flex');
+    }
+
+    function closeCartModal() {
+      cartModal.classList.add('hidden');
+      cartModal.classList.remove('flex');
+    }
+
+    function openMopModal() {
+      mopModal.classList.remove('hidden');
+      mopModal.classList.add('flex');
+    }
+
+    function closeMopModal() {
+      mopModal.classList.add('hidden');
+      mopModal.classList.remove('flex');
+    }
+
+    function closeReceiptPreviewModal() {
+      receiptPreviewModal.classList.add('hidden');
+      receiptPreviewModal.classList.remove('flex');
+    }
+
+    function truncateTextCanvas(ctx, text, maxWidth) {
+      if (ctx.measureText(text).width <= maxWidth) return text;
+      let trimmed = text;
+      while (trimmed.length > 1 && ctx.measureText(trimmed + '...').width > maxWidth) {
+        trimmed = trimmed.slice(0, -1);
+      }
+      return trimmed + '...';
+    }
+
+    function renderReceiptPngDataUrl() {
+      const customerRaw = document.getElementById('customerNameInput').value.trim();
+      const customerName = customerRaw || 'james';
+      const mop = document.getElementById('paymentMethodSelect').value || 'GCash';
+      const now = new Date();
+      const orderId = `CN-${Math.floor(100000 + Math.random() * 900000)}`;
+      const dateStr = now.toLocaleString('en-US', {
+        month: 'short',
+        day: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true
+      });
+
+      const freebies = getPromoFreebies();
+      const totalAmount = cart.reduce((sum, item) => sum + item.priceNum * item.qty, 0);
+
+      const width = 920;
+      const itemRowHeight = 46;
+      const freebieHeight = freebies.length > 0 ? 44 + freebies.length * 32 : 0;
+      const height = 470 + cart.length * itemRowHeight + freebieHeight;
+      const dpr = 2;
+
+      const canvas = document.createElement('canvas');
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      // Outer pastel pink frame
+      ctx.fillStyle = '#F9DCE6';
+      ctx.fillRect(0, 0, width, height);
+
+      // Main receipt card
+      const pad = 28;
+      const cardX = pad;
+      const cardY = pad;
+      const cardW = width - pad * 2;
+      const cardH = height - pad * 2;
+
+      ctx.fillStyle = '#FFFDFC';
+      ctx.fillRect(cardX, cardY, cardW, cardH);
+
+      // Top blush header block
+      ctx.fillStyle = '#FCECF2';
+      ctx.fillRect(cardX + 26, cardY + 26, cardW - 52, 168);
+
+      // Brand title
+      ctx.fillStyle = '#382228';
+      ctx.textAlign = 'center';
+      ctx.font = '700 54px "Playfair Display", Georgia, serif';
+      ctx.fillText('Chisee Notes', width / 2, cardY + 102);
+
+      // Subtitle
+      ctx.fillStyle = '#C95B84';
+      ctx.font = '600 18px "Inter", sans-serif';
+      ctx.fillText('OFFICIAL ORDER RECEIPT • DIGITAL REVIEWERS', width / 2, cardY + 148);
+
+      // Meta block
+      const metaY = cardY + 244;
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#2B1B1F';
+      ctx.font = '700 22px "Inter", sans-serif';
+      ctx.fillText(`Order ID: ${orderId}`, cardX + 34, metaY);
+
+      ctx.fillStyle = '#2B1B1F';
+      ctx.font = '600 22px "Inter", sans-serif';
+      ctx.fillText(`Customer: ${customerName}`, cardX + 34, metaY + 42);
+
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#7A686E';
+      ctx.font = '400 19px "Inter", sans-serif';
+      ctx.fillText(dateStr, cardX + cardW - 34, metaY);
+
+      ctx.fillStyle = '#C95B84';
+      ctx.font = '700 21px "Inter", sans-serif';
+      ctx.fillText(`MOP: ${mop}`, cardX + cardW - 34, metaY + 42);
+
+      // Divider 1
+      const div1Y = metaY + 72;
+      ctx.strokeStyle = '#F2CEDB';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(cardX + 34, div1Y);
+      ctx.lineTo(cardX + cardW - 34, div1Y);
+      ctx.stroke();
+
+      // Ordered items section
+      let curY = div1Y + 44;
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#C95B84';
+      ctx.font = '700 16px "Inter", sans-serif';
+      ctx.fillText('ORDERED ITEMS', cardX + 34, curY);
+
+      curY += 36;
+      cart.forEach((item) => {
+        const lineTotal = item.priceNum * item.qty;
+        const labelText = `${item.qty}x ${item.title} — ${item.pkgLabel}`;
+        const maxLabelWidth = cardW - 180;
+
+        ctx.textAlign = 'left';
+        ctx.fillStyle = '#3B2A2F';
+        ctx.font = '400 22px "Inter", sans-serif';
+        ctx.fillText(truncateTextCanvas(ctx, labelText, maxLabelWidth), cardX + 34, curY);
+
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#2B1B1F';
+        ctx.font = '600 22px "Inter", sans-serif';
+        ctx.fillText(`₱${lineTotal}`, cardX + cardW - 34, curY);
+
+        curY += itemRowHeight;
+      });
+
+      // Freebies line(s)
+      if (freebies.length > 0) {
+        curY += 6;
+        freebies.forEach((freebie) => {
+          ctx.textAlign = 'left';
+          ctx.fillStyle = '#C95B84';
+          ctx.font = '600 20px "Inter", sans-serif';
+          ctx.fillText(truncateTextCanvas(ctx, `FREEBIE: ${freebie}`, cardW - 68), cardX + 34, curY);
+          curY += 32;
+        });
+      }
+
+      // Divider 2
+      const div2Y = curY + 24;
+      ctx.strokeStyle = '#F2CEDB';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(cardX + 34, div2Y);
+      ctx.lineTo(cardX + cardW - 34, div2Y);
+      ctx.stroke();
+
+      // Total amount
+      const totalY = div2Y + 64;
+      ctx.textAlign = 'left';
+      ctx.fillStyle = '#2B1B1F';
+      ctx.font = '700 28px "Inter", sans-serif';
+      ctx.fillText('TOTAL AMOUNT', cardX + 34, totalY);
+
+      ctx.textAlign = 'right';
+      ctx.fillStyle = '#DF5C8A';
+      ctx.font = '700 42px "Inter", sans-serif';
+      ctx.fillText(`₱${totalAmount}`, cardX + cardW - 34, totalY + 4);
+
+      // Footer note
+      const footerY = cardY + cardH - 28;
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#7A686E';
+      ctx.font = '400 18px "Inter", sans-serif';
+      ctx.fillText(
+        'Send this order receipt + proof of payment to our TikTok (@chisee_atelier_educnotes)',
+        width / 2,
+        footerY
+      );
+
+      const safeSlug = customerName.replace(/[^a-zA-Z0-9_-]+/g, '_').replace(/^_+|_+$/g, '') || 'Order';
+      return {
+        dataUrl: canvas.toDataURL('image/png'),
+        filename: `Chisee-Notes-Receipt-${safeSlug}.png`
+      };
+    }
+
+    function triggerPngDownload(dataUrl, filename, silentToast = false) {
+      try {
+        const link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = filename;
+        link.rel = 'noopener';
+        link.style.position = 'fixed';
+        link.style.left = '-9999px';
+        document.body.appendChild(link);
+
+        link.dispatchEvent(new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+          view: window
+        }));
+
+        setTimeout(() => {
+          if (link.parentNode) {
+            link.parentNode.removeChild(link);
+          }
+        }, 2000);
+
+        if (!silentToast) {
+          showToast('Receipt image download started');
+        }
+      } catch (err) {
+        console.error('PNG download error:', err);
+      }
+    }
+
+    function saveReceiptPngAgain() {
+      if (!lastReceiptDataUrl) return;
+      triggerPngDownload(lastReceiptDataUrl, lastReceiptFilename, false);
+    }
+
+    function downloadOrderReceipt() {
+      if (cart.length === 0) {
+        showToast('Add an item to cart first');
+        return;
+      }
+
+      const { dataUrl, filename } = renderReceiptPngDataUrl();
+      lastReceiptDataUrl = dataUrl;
+      lastReceiptFilename = filename;
+
+      // Show image directly inside Cart modal AND open Receipt Image popup
+      const inlineBox = document.getElementById('inlineReceiptImageBox');
+      const inlineImg = document.getElementById('inlineReceiptImage');
+      inlineImg.src = dataUrl;
+      inlineBox.classList.remove('hidden');
+
+      const previewImg = document.getElementById('receiptImagePreview');
+      previewImg.src = dataUrl;
+
+      triggerPngDownload(dataUrl, filename, false);
+
+      receiptPreviewModal.classList.remove('hidden');
+      receiptPreviewModal.classList.add('flex');
+    }
+
+    // Filter tabs
+    document.querySelectorAll('.filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach((b) => {
+          b.classList.remove('active', 'bg-terracotta', 'text-white');
+          b.classList.add('bg-blushLight', 'text-cocoa', 'border', 'border-blushDark/60');
+        });
+        btn.classList.add('active', 'bg-terracotta', 'text-white');
+        btn.classList.remove('bg-blushLight', 'text-cocoa', 'border', 'border-blushDark/60');
+
+        currentFilter = btn.getAttribute('data-filter') || 'all';
+        renderCatalog();
+      });
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      currentSearch = e.target.value || '';
+      renderCatalog();
+    });
+
+    resetFiltersBtn.addEventListener('click', () => {
+      currentFilter = 'all';
+      currentSearch = '';
+      searchInput.value = '';
+      document.querySelectorAll('.filter-btn').forEach((b) => {
+        const isAll = b.getAttribute('data-filter') === 'all';
+        b.classList.toggle('active', isAll);
+        b.classList.toggle('bg-terracotta', isAll);
+        b.classList.toggle('text-white', isAll);
+        b.classList.toggle('bg-blushLight', !isAll);
+        b.classList.toggle('text-cocoa', !isAll);
+        b.classList.toggle('border', !isAll);
+        b.classList.toggle('border-blushDark/60', !isAll);
+      });
+      renderCatalog();
+    });
+
+    closeModalBtn.addEventListener('click', closePreviewModal);
+
+    [previewModal, cartModal, receiptPreviewModal, mopModal].forEach((modalEl) => {
+      modalEl.addEventListener('click', (e) => {
+        if (e.target === modalEl) {
+          modalEl.classList.add('hidden');
+          modalEl.classList.remove('flex');
+        }
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closePreviewModal();
+        closeCartModal();
+        closeReceiptPreviewModal();
+        closeMopModal();
+      }
+    });
+
+    renderCatalog();
+    renderCartModal();
+  </script>
+</body>
+</html>
